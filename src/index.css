@@ -1,0 +1,89 @@
+/* Using Tailwind via CDN in index.html for development. */
+html, body, #root { height: 100%; }
+
+/* Minimal defaults */
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+/* Card and control helpers */
+.card { background: #ffffff; border-radius: 0.5rem; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06); }
+.muted { color: #6b7280 }
+.soft-transition { transition: all 160ms ease; }
+.hover-pop:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(15,23,42,0.08); }
+
+/* Explicit light-mode defaults so styles don't look dark unless .dark is present */
+.bg-white { background-color: #ffffff !important; }
+input, select, textarea { background-color: #ffffff; color: #0f172a; border: 1px solid #e5e7eb; }
+select option { color: #0f172a }
+
+/* Dark mode helpers when .dark is present on <html> */
+.dark body { background-color: #0b1220; }
+.dark .app-title { color: #ffffff }
+.app-title { color: #0f1724 }
+.dark .app-title { color: #000000 !important; opacity: 1 !important; text-shadow: none; }
+.app-title { color: #0b1220 !important; }
+.dark header p, .dark .text-gray-500 { color: #cbd5e1 !important; }
+.dark .text-gray-300 { color: #d1d5db !important; }
+.dark .header-sub { color: #cbd5e1 !important; }
+.dark .header-label { color: #ffffff !important; }
+.dark .chart-heading { color: #ffffff !important; }
+.dark .entry-title { color: #ffffff !important; }
+.entry-title button { background: transparent; border: none; padding: 0; font: inherit; text-align: left; cursor: pointer; }
+.entry-title button:hover { color: inherit; }
+.dark .entry-title button:hover { color: #ffffff; }
+.header-sub { color: #64748b }
+.dark .header-sub { color: #cbd5e1 }
+.entry-sub { color: #9ca3af }
+.dark .entry-sub { color: #9ca3af }
+.modal-panel { transform: translateY(-6px); transition: transform 160ms ease, opacity 160ms ease; opacity: 1; box-shadow: 0 10px 30px rgba(2,6,23,0.2); }
+.modal-close { background: transparent; border: none; color: inherit }
+.modal-panel:focus { outline: none }
+.modal-panel input, .modal-panel select { background: #fff; color: #0f1724 }
+.dark .modal-panel { box-shadow: 0 10px 30px rgba(2,6,23,0.6) }
+.dark .modal-panel input, .dark .modal-panel select { background: #0b1220; color: #e6eef8 }
+.dark .bg-white { background-color: #0f1724 !important }
+.dark .border { border-color: #1f2937 }
+.dark input, .dark select, .dark textarea { background-color: #0b1220; color: #e6eef8; border-color: #1f2937 }
+.dark select option { color: #e6eef8 }
+
+/* Modal overlay & panel animations */
+.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 180ms ease }
+.modal-overlay.show { background: rgba(0,0,0,0.5) }
+.modal-panel { transform: translateY(-8px) scale(0.98); opacity: 0; transition: transform 180ms ease, opacity 180ms ease }
+.modal-panel.show { transform: translateY(0) scale(1); opacity: 1 }
+
+/* Theme toggle switch */
+.theme-switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer }
+.theme-switch .switch { width: 56px; height: 30px; background: #e6e9ef; border-radius: 999px; position: relative; transition: background 200ms ease }
+.theme-switch .knob { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; background: white; border-radius: 999px; box-shadow: 0 4px 12px rgba(2,6,23,0.12); transition: transform 200ms cubic-bezier(.2,.8,.2,1) }
+.theme-switch .icon { width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px }
+.theme-switch .icon { margin-right: 6px }
+
+/* Modal form element styles */
+.modal-label { color: #475569 }
+.modal-input { background: #fff; color: #0f1724; border-color: #e6e9ef }
+.dark .modal-input { background: #0b1220; color: #e6eef8; border-color: #1f2937 }
+.btn-cancel { background: transparent; color: #374151 }
+.dark .btn-cancel { background: transparent; color: #94a3b8 }
+
+/* Dark-mode modal title and label visibility */
+.dark .modal-panel h3 { color: #ffffff !important }
+.dark .modal-label { color: #cbd5e1 !important }
+.dark .modal-panel .modal-close { color: #cbd5e1 !important }
+
+/* Placeholder colors */
+.modal-input::placeholder { color: #9ca3af }
+.dark .modal-input::placeholder { color: #94a3b8 }
+
+/* Light-mode modal color fixes: ensure readable text on white panel */
+.modal-panel { color: #0f1724; }
+.modal-panel h3 { color: #0f1724; font-weight: 700 }
+.modal-panel label { color: #374151 }
+.modal-panel .modal-close { color: #6b7280; display:inline-flex; align-items:center; justify-content:center }
+.modal-panel .modal-close:hover { color: #111827 }
+.theme-switch .icon svg { display:block }
+.modal-panel .px-4 { /* make Cancel/Save buttons more visible on light */
+	opacity: 1;
+}
+.theme-switch.dark .switch { background: #0b1220 }
+.theme-switch.dark .knob { transform: translateX(26px); background: #9ca3af }
+.theme-switch .label { font-size: 0.85rem }
