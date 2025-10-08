@@ -4,7 +4,11 @@ const THEME_KEY = 'expense-tracker-theme'
 export function loadEntries() {
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? JSON.parse(raw) : []
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return []
+    // Coerce amounts to numbers in case they were stored as strings
+    return parsed.map(e => ({ ...e, amount: typeof e.amount === 'string' ? Number(e.amount) : e.amount }))
   } catch (e) {
     console.error('loadEntries', e)
     return []

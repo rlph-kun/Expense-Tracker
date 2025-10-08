@@ -38,9 +38,12 @@ export default function App() {
     return true
   })
 
-  const balance = entries.reduce((s,e) => s + (e.type==='Income' ? e.amount : -e.amount), 0)
-  const totalIncome = entries.filter(e=>e.type==='Income').reduce((s,a)=>s+a.amount,0)
-  const totalExpense = entries.filter(e=>e.type!=='Income').reduce((s,a)=>s+a.amount,0)
+  const balance = entries.reduce((s,e) => {
+    const amt = Number(e.amount) || 0
+    return s + (e.type === 'Income' ? amt : -amt)
+  }, 0)
+  const totalIncome = entries.filter(e => e.type === 'Income').reduce((s, a) => s + (Number(a.amount) || 0), 0)
+  const totalExpense = entries.filter(e => e.type !== 'Income').reduce((s, a) => s + (Number(a.amount) || 0), 0)
 
   const [editing, setEditing] = useState(null)
 
