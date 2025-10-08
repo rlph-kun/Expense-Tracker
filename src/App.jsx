@@ -50,7 +50,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white p-6 dark:bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white p-4 sm:p-6 dark:bg-slate-900">
       <div className="max-w-5xl mx-auto">
         <header className="mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
@@ -58,16 +58,16 @@ export default function App() {
             <p className="text-sm text-gray-500 dark:text-gray-300 header-sub">Track incomes, expenses and visualize them.</p>
           </div>
 
-          <div className="flex gap-4 items-center">
-            <div className="bg-white shadow rounded p-3 text-center min-w-[120px]">
+          <div className="flex gap-3 items-center flex-wrap">
+            <div className="bg-white shadow rounded p-3 text-center min-w-[110px] flex-1 sm:flex-none">
               <div className="text-xs text-gray-500">Balance</div>
               <div className={"text-xl font-semibold " + (balance>=0? 'text-green-600':'text-red-600')}>₱{Math.abs(balance).toFixed(2)}</div>
             </div>
-            <div className="bg-white shadow rounded p-3 text-center min-w-[120px]">
+            <div className="bg-white shadow rounded p-3 text-center min-w-[110px] flex-1 sm:flex-none">
               <div className="text-xs text-gray-500">Income</div>
               <div className="text-lg font-semibold text-green-600">₱{totalIncome.toFixed(2)}</div>
             </div>
-            <div className="bg-white shadow rounded p-3 text-center min-w-[120px]">
+            <div className="bg-white shadow rounded p-3 text-center min-w-[110px] flex-1 sm:flex-none">
               <div className="text-xs text-gray-500">Expense</div>
               <div className="text-lg font-semibold text-red-600">₱{totalExpense.toFixed(2)}</div>
             </div>
@@ -80,7 +80,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="bg-white rounded-lg shadow p-6">
+        <main className="bg-white rounded-lg shadow p-4 sm:p-6">
           <EntryForm onAdd={addEntry} categories={categories} />
 
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">

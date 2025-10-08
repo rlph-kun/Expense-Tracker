@@ -33,7 +33,7 @@ export default function EntryForm({ onAdd, categories }) {
 
       <div>
         <label className="text-sm text-gray-600">Amount</label>
-  <input className="w-full border p-2 rounded mt-1" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} />
+  <input inputMode="decimal" className="w-full border p-2 rounded mt-1" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} />
       </div>
 
       <div>
@@ -43,16 +43,16 @@ export default function EntryForm({ onAdd, categories }) {
         </select>
       </div>
 
-        <div className="md:col-span-6 flex gap-2 mt-2">
-        <div className="flex items-center gap-2">
+        <div className="md:col-span-6 flex flex-col sm:flex-row gap-2 mt-2 items-end">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <label className="text-sm header-label">Type</label>
-          <select className="border p-2 rounded" value={type} onChange={e => setType(e.target.value)}>
+          <select className="border p-2 rounded ml-2" value={type} onChange={e => setType(e.target.value)}>
             <option>Expense</option>
             <option>Income</option>
           </select>
         </div>
 
-  <button className="ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded shadow hover:opacity-95 transition flex items-center gap-2"><PlusIcon className="w-4 h-4" />Add Entry</button>
+  <button type="submit" className="w-full sm:w-auto ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded shadow hover:opacity-95 transition flex items-center gap-2 justify-center"><PlusIcon className="w-4 h-4" />Add Entry</button>
       </div>
     </form>
   )
