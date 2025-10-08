@@ -58,7 +58,7 @@ export default function App() {
         <header className="mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-extrabold app-title">Expense Tracker</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-300 header-sub">Track incomes, expenses and visualize them.</p>
+            <p className="text-sm text-b-500 header-sub dark:text-black">Track incomes, expenses and visualize them.</p>
           </div>
 
           <div className="flex gap-3 items-center flex-wrap">

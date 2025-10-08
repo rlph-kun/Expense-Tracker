@@ -23,7 +23,8 @@ select option { color: #0f172a }
 .app-title { color: #0b1220 !important; }
 .dark header p, .dark .text-gray-500 { color: #cbd5e1 !important; }
 .dark .text-gray-300 { color: #d1d5db !important; }
-.dark .header-sub { color: #cbd5e1 !important; }
+/* Make the header subtitle black in dark mode as requested */
+.dark .header-sub { color: #000000 !important; }
 .dark .header-label { color: #ffffff !important; }
 .dark .chart-heading { color: #ffffff !important; }
 .dark .entry-title { color: #ffffff !important; }

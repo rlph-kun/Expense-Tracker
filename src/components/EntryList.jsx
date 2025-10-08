@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { FixedSizeList as List } from 'react-window'
 import { TrashIcon } from './Icons'
 
 function Row({ e, onRemove, onEdit }) {
@@ -25,8 +26,45 @@ export default function EntryList({ entries, onRemove, onEdit }) {
   const toShow = expanded ? entries : entries.slice(0, PREVIEW_COUNT)
 
   return (
-    <div className="space-y-3">
-      {toShow.map(e => <Row key={e.id} e={e} onRemove={onRemove} onEdit={onEdit} />)}
+    <div>
+      {!expanded && (
+        <div className="space-y-3">
+          {toShow.map(e => <Row key={e.id} e={e} onRemove={onRemove} onEdit={onEdit} />)}
+        </div>
+      )}
+
+      {expanded && (
+        // Virtualized list: each row approx 120px tall
+        // If the list is relatively small, grow the container to show all items
+        // so the user doesn't need to scroll inside the mini-list. For very large
+        // lists, cap the height to keep a bounded viewport.
+        (() => {
+          const ITEM_SIZE = 120
+          const AUTO_SHOW_LIMIT = 20 // show all if <= 20 items
+          const maxHeight = 600
+          const height = entries.length <= AUTO_SHOW_LIMIT ? entries.length * ITEM_SIZE : Math.min(maxHeight, entries.length * ITEM_SIZE)
+          return (
+            <div style={{ height, width: '100%' }}>
+              <List
+                height={height}
+                itemCount={entries.length}
+                itemSize={ITEM_SIZE}
+                width={'100%'}
+              >
+                {({ index, style }) => {
+                  const e = entries[index]
+                  return (
+                    <div style={style} key={e.id} className="p-0">
+                      <Row e={e} onRemove={onRemove} onEdit={onEdit} />
+                    </div>
+                  )
+                }}
+              </List>
+            </div>
+          )
+        })()
+      )}
+
       {entries.length > PREVIEW_COUNT && (
         <div className="text-center mt-2">
           <button className="text-sm text-blue-600 hover:underline" onClick={() => setExpanded(v => !v)}>
