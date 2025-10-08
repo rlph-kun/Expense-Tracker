@@ -6,7 +6,7 @@ import { loadEntries, saveEntries, loadTheme, saveTheme } from './lib/storage'
 import EditModal from './components/EditModal'
 import { SunIcon, MoonIcon } from './components/Icons'
 
-const DEFAULT_CATEGORIES = ['Allowance','Tuition', 'Food', 'Transport', 'Rent', 'Salary', 'Order Online', 'E or W Bill', 'Other']
+const DEFAULT_CATEGORIES = ['Allowance','Tuition', 'Food', 'Transport', 'Rent', 'Salary', 'Order Online', 'Electric or Water Bill', 'Other']
 
 export default function App() {
   const [entries, setEntries] = useState(() => loadEntries() || [])
